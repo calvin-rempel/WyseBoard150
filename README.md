@@ -1,6 +1,8 @@
 # WyseBoard
 
-This is a simple converter to allow use of a PS/2 style keyboard with a Wyse 60 serial terminal.
+This is a simple converter to allow use of a PS/2 style keyboard with a Wyse 150 serial terminal. It is a fork of [this project](https://github.com/bryanc806/WyseBoard), though when I built it I found that on my Wyse 150 that the keymapping was completely messed up. After a lot of trial and error, I got MOST of the keys correctly mapped, although I was unable to find keys matching up to the down arrow key (which, when connecting the terminal to Linux and trying to use a text editor, is a bit of a problem). I mapped that and a few of the other keys to some of the F-Keys (oddly, there is another F4 that doesn't seem to correspond to F4 when in the terminal menu - I'm not sure what is up with that), and at some point may map the ESC key to one of these function keys - the hope being that I can find a way to get Linux to re-map these keys to the keys I need them to be.
+
+I have also found the key output to be a bit jittery at times (ie, I suddenly wind up with extra characters). I tried lowering the baud rate on the keyboard adapter, although that does not appear to have made much difference. That being said, if I can get the key mapping sorted out, it is infrequent enough that - while a bit annoying - it could probably be lived with (though I may see if I can figure that out down the road. Or not. We will see).
 
 ## Connections on an Arduino Pro Mini:
 
