@@ -33,12 +33,12 @@ const uint8_t PROGMEM keymap[104] =
     PS2_KEY_UP_ARROW,/*UP*/       PS2_KEY_KP6,/*6*/         PS2_KEY_DELETE,/*F3*/          PS2_KEY_C,/*c*/               PS2_KEY_0,/*0*/              PS2_KEY_W,/*w*/             PS2_KEY_BACK,/*\*/          PS2_KEY_F3,/*f3*/
     PS2_KEY_KP_COMMA,/*,*/        PS2_KEY_KP1,/*1*/         PS2_KEY_DN_ARROW,/*F4*/        PS2_KEY_X,/*x*/               PS2_KEY_MINUS,/*-*/          PS2_KEY_E,/*e*/             PS2_KEY_SEMI,/*;*/          PS2_KEY_F4,/*f4*/
     PS2_KEY_L_ARROW, /**/         PS2_KEY_KP2,/*2*/         PS2_KEY_KP7,/*7*/              PS2_KEY_V,/*v*/               PS2_KEY_EQUAL,/*=*/          PS2_KEY_Q,/*q*/             PS2_KEY_SPACE,/* */         PS2_KEY_F5,/*f5*/
-    0,/*F19*/                     0,/*F18*/                 0,/*F17*/                      0,/*F16*/                     0,/*F15*/                    PS2_KEY_HOME,/*HOME*/       0,/*\n*/                    0,/*Nothing*/
+    0,/*F19*/                     0,/*F18*/                 0,/*F17*/                      PS2_KEY_END,/*F16*/           PS2_KEY_ESC,/*F15*/          PS2_KEY_HOME,/*HOME*/       0,/*\n*/                    0,/*Nothing*/
     PS2_KEY_L,/*l*/               PS2_KEY_K,/*k*/           PS2_KEY_J,/*j*/                0, /*SHIFT*/                  PS2_KEY_H,/*h*/              PS2_KEY_G,/*g*/             0,/*F20*/                   PS2_KEY_F6,/*f6*/
     PS2_KEY_R_ARROW,/**/          PS2_KEY_CLOSE_SQ,/*]*/    PS2_KEY_OPEN_SQ,/*[*/          PS2_KEY_BS,/*<<*/             PS2_KEY_P,/*p*/              PS2_KEY_KP_PLUS,/*x1b[@*/   0,/*N/A*/                   PS2_KEY_F7,/*f7*/
     PS2_KEY_7,/*7*/               PS2_KEY_6,/*6*/           PS2_KEY_5,/*5*/                PS2_KEY_4,/*4*/               0,/*N/A*/                    PS2_KEY_T, /*t*/            0,/*CAPS*/                  PS2_KEY_F8,/*f8*/
     PS2_KEY_DIV,/*/*/             PS2_KEY_KP_DOT,/*.*/      PS2_KEY_COMMA,/*,*/            0,/*N/A*/                     PS2_KEY_SINGLE,/*`*/         PS2_KEY_Y,/*y*/             PS2_KEY_A,/*a*/             PS2_KEY_F9,/*f9*/
-    PS2_KEY_KP_DIV,/*,*/          PS2_KEY_KP_MINUS,/*-*/    PS2_KEY_ESC,/*esc?*/           PS2_KEY_N,/*n*/               PS2_KEY_1,/*1*/              PS2_KEY_U,/*u*/             PS2_KEY_S,/*s*/             PS2_KEY_F10,/*f10*/
+    PS2_KEY_KP_DIV,/*,*/          PS2_KEY_KP_MINUS,/*-*/    0,/*esc?*/                     PS2_KEY_N,/*n*/               PS2_KEY_1,/*1*/              PS2_KEY_U,/*u*/             PS2_KEY_S,/*s*/             PS2_KEY_F10,/*f10*/
     PS2_KEY_KP_ENTER,/*\r*/       PS2_KEY_INSERT,/*esc?*/   PS2_KEY_KP8,/*8*/              PS2_KEY_B,/*b*/               PS2_KEY_2,/*2*/              PS2_KEY_I,/*i*/             PS2_KEY_F,/*f*/             PS2_KEY_F11,/*f11*/
     PS2_KEY_KP_TIMES,/*N/A*/      PS2_KEY_KP3,/*3*/         PS2_KEY_KP9,/*9*/              PS2_KEY_M,/*m*/               PS2_KEY_3,/*3*/              PS2_KEY_O,/*o*/             PS2_KEY_D,/*d*/             PS2_KEY_F12,/*f12*/
     
@@ -133,7 +133,7 @@ void loop() {
         j = c & 0xff;
         i = keymap2[j];
         if (i != 0xff)
-          (c & PS2_BREAK) ? RELEASE_KE(i) : PRESS_KEY(i);
+          (c & PS2_BREAK) ? RELEASE_KEY(i) : PRESS_KEY(i);
         cLast = c;
         //Serial.println( i );
         //Serial.println( i, HEX );
