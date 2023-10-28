@@ -29,6 +29,39 @@ See https://terminals-wiki.org/wiki/index.php/Wyse_WY-60
 
 The PS2Advanced Library (https://github.com/techpaul/PS2KeyAdvanced) is needed for the PS2 side of things.
 
+## Use With Linux and Terminfo
 
+Because I have been unable to get the key mapping perfect on the Arduino side of things, I am compensating for that in part by using terminfo.
+
+### Install Dependencies
+Per [Heamogoblin](https://bytemyvdu.wordpress.com/2016/09/03/tandy-trs80-m100-serial-terminal/), assuming you are on Debian, run:
+```
+sudo apt-get install build-essential libncurses5-dev libncursesw5-dev
+```
+and then, in the directory you downloaded vt100wyse to, run:
+```
+tic vt100wyse
+```
+
+Then, copy the resultant file so it can be used system wide:
+```
+sudo cp $HOME/.terminfo/v/vt100-wyse /usr/share/terminfo/v/
+```
+and reboot:
+```
+sudo reboot
+```
+
+To use the new terminfo file, run:
+```
+export TERM=vt100-wyse
+```
+I added this into my bashrc so it would run upon login.
+
+I got the original source for the VT100 terminfo file from: http://www.catb.org/~esr/terminfo/
+And some much needed details for adding the end and escape key from here: https://www.ibm.com/docs/en/zos/2.3.0?topic=syntax-defined-capabilities
+
+Note: The escape key only SORT-OF works. Testing in VIM, I can escape to command mode, but it also overwrites a character and does something funny - so until such a time
+as I can figure that one out, VIM would not really be a usable text editor with this terminal (though, perhaps VIM supports custom key bindings which might be a suitable work around).
 
 
